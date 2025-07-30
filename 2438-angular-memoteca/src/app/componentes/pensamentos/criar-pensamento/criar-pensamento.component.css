@@ -48,6 +48,14 @@
   margin: 0.5rem 0 2rem;
 }
 
+.mensagem__erro {
+  font-size: 12px;
+  margin-left: 5px;
+  color: red;
+  margin-top: -25px;
+  margin-bottom: 20px;
+}
+
 .container-radio {
   display: flex;
   gap: 2.5rem;
