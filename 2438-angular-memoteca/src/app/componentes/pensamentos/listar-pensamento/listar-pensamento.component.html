@@ -1,6 +1,21 @@
 <section class="container">
   <header class="header d-flex">
-    <h2 class="ff-inter">Meu mural</h2>
+    <div class="buscar-pensamentos">
+      <input
+        type="search"
+        class="filtro"
+        placeholder="O que você procura?"
+        autofocus
+        [(ngModel)]="filtro"
+      />
+      <img src="/assets/imagens/lupa.png" alt="Lupa Azul" />
+    </div>
+    <h2 class="ff-inter" *ngIf="filtro; else semFiltro">
+      Filtro: {{ filtro }}
+    </h2>
+    <ng-template #semFiltro>
+      <h2 class="ff-inter">Meu mural</h2>
+    </ng-template>
     <button routerLink="/criarPensamento" class="botao">
       Adicionar pensamento
     </button>
@@ -11,8 +26,10 @@
     </div>
   </div>
 </section>
-<app-botao-carregar-mais [haMaisPensamentos]="haMaisPensamentos" (click)="carregarMaisPensamentos()">
-
+<app-botao-carregar-mais
+  [haMaisPensamentos]="haMaisPensamentos"
+  (click)="carregarMaisPensamentos()"
+>
 </app-botao-carregar-mais>
 
 <ng-template #semPensamentos>
