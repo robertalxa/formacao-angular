@@ -2,7 +2,7 @@
   <header class="header">
     <h2>Adicione um novo pensamento</h2>
   </header>
-  <form action="">
+  <form action="" [formGroup]="formulario">
     <label for="pensamento">Pensamento:</label>
     <input
       type="textarea"
@@ -10,8 +10,14 @@
       id="pensamento"
       name="pensamento"
       placeholder="Digite o pensamento"
-      [(ngModel)]="pensamento.conteudo"
+      formControlName="conteudo"
     />
+    <div
+      class="mensagem__erro"
+      *ngIf="formulario.get('conteudo')?.errors?.['required'] && formulario.get('conteudo')?.touched"
+    >
+      O pensamento é obrigatório
+    </div>
     <label for="autoria">Autoria ou fonte:</label>
     <input
       type="text"
@@ -19,8 +25,29 @@
       id="autoria"
       name="autoria"
       placeholder="Digite a autoria ou fonte"
-      [(ngModel)]="pensamento.autoria"
+      formControlName="autoria"
     />
+    <div *ngIf="formulario.get('autoria')?.touched">
+      <div
+        class="mensagem__erro"
+        *ngIf="formulario.get('autoria')?.errors?.['required']"
+      >
+        A autoria é obrigatória
+      </div>
+      <div
+        class="mensagem__erro"
+        *ngIf="formulario.get('autoria')?.errors?.['minlength']"
+      >
+        A autoria precisa ter no mínimo 3 caracteres
+      </div>
+      <div
+        class="mensagem__erro"
+        *ngIf="formulario.get('autoria')?.errors?.['minusculo']"
+      >
+        A autoria precisa ser preenchida em minúsculo
+      </div>
+    </div>
+
     <label for="modelo">Selecione o modelo do card</label>
     <div class="container-radio">
       <div class="radio-modelo">
@@ -30,7 +57,7 @@
             name="modelo"
             id="modelo1"
             value="modelo1"
-            [(ngModel)]="pensamento.modelo"
+            formControlName="modelo"
           />
           <div class="custom-radio"><span></span></div>
           <span>Modelo 1</span>
@@ -38,9 +65,9 @@
         Prévia:
         <div class="modelo modelo1 ffroboto">
           <img src="../../../../assets/imagens/modelo1.png" alt="Aspas azuis" />
-          <p class="conteudo">{{ pensamento.conteudo }}</p>
+          <p class="conteudo">{{ formulario.get("conteudo")?.value }}</p>
           <p class="autoria">
-            <b>{{ pensamento.autoria }}</b>
+            <b>{{ formulario.get("autoria")?.value }}</b>
           </p>
         </div>
       </div>
@@ -51,7 +78,7 @@
             name="modelo"
             id="modelo2"
             value="modelo2"
-            [(ngModel)]="pensamento.modelo"
+            formControlName="modelo"
           />
           <div class="custom-radio"><span></span></div>
           <span>Modelo 2</span>
@@ -62,9 +89,9 @@
             src="../../../../assets/imagens/modelo2.png"
             alt="Aspas azuis claro"
           />
-          <p class="conteudo">{{ pensamento.conteudo }}</p>
+          <p class="conteudo">{{ formulario.get("conteudo")?.value }}</p>
           <p class="autoria">
-            <b>{{ pensamento.autoria }}</b>
+            <b>{{ formulario.get("autoria")?.value }}</b>
           </p>
         </div>
       </div>
@@ -75,7 +102,7 @@
             name="modelo"
             id="modelo3"
             value="modelo3"
-            [(ngModel)]="pensamento.modelo"
+            formControlName="modelo"
           />
           <div class="custom-radio"><span></span></div>
           <span>Modelo 3</span>
@@ -86,21 +113,22 @@
             src="../../../../assets/imagens/modelo3.png"
             alt="Aspas verdes"
           />
-          <p class="conteudo">{{ pensamento.conteudo }}</p>
+          <p class="conteudo">{{ formulario.get("conteudo")?.value }}</p>
           <p class="autoria">
-            <b>{{ pensamento.autoria }}</b>
+            <b>{{ formulario.get("autoria")?.value }}</b>
           </p>
         </div>
       </div>
     </div>
     <div class="acoes">
-      <button (click)="editarPensamento()" class="botao">Salvar</button>
       <button
-        (click)="cancelarForm()"
-        class="botao"
+        (click)="editarPensamento()"
+        [ngClass]="habilitaBotao()"
+        [disabled]="!formulario.valid"
       >
-        Cancelar
+        Salvar
       </button>
+      <button (click)="cancelarForm()" class="botao">Cancelar</button>
     </div>
   </form>
 </section>
