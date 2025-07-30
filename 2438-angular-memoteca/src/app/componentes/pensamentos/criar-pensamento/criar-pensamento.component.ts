@@ -19,9 +19,23 @@ export class CriarPensamentoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const regexEmptyValue = /(.|\s)*\S(.|s)*/;
     this.formulario = this.formBuilder.group({
-      conteudo: ['Formulário reativo', [Validators.required]],
-      autoria: ['Robert', [Validators.required]],
+      conteudo: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern(regexEmptyValue),
+        ]),
+      ],
+      autoria: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern(regexEmptyValue),
+          Validators.minLength(3),
+        ]),
+      ],
       modelo: ['modelo1'],
     });
   }
