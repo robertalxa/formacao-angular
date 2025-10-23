@@ -4,7 +4,8 @@
       "id": 1,
       "conteudo": "Is it wickedness? Is it weakness? You decide. Are we gonna live or die?",
       "autoria": "Kendrick Lamar",
-      "modelo": "modelo1"
+      "modelo": "modelo1",
+      "favorito": true
     },
     {
       "id": 2,
@@ -22,6 +23,7 @@
       "conteudo": "If the sun refused to shine, would I still be your lover? Would you want me there?",
       "autoria": "Ariana Grande",
       "modelo": "modelo2",
+      "favorito": true,
       "id": 4
     },
     {
@@ -29,12 +31,6 @@
       "autoria": "Luke Skywalker",
       "modelo": "modelo1",
       "id": 5
-    },
-    {
-      "conteudo": "as",
-      "autoria": "asd",
-      "modelo": "modelo1",
-      "id": 6
     },
     {
       "id": 7,
@@ -51,6 +47,7 @@
     {
       "conteudo": "And it's all I can take for this moment",
       "autoria": "justin bieber",
+      "favorito": true,
       "modelo": "modelo3",
       "id": 9
     }

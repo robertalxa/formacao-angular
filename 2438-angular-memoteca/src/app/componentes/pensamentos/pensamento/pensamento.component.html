@@ -12,6 +12,17 @@
   </p>
   <div class="acoes">
     <button
+      class="botao-favorito"
+      routerLink="/pensamentos/editarPensamento/{{ pensamento.id }}"
+    >
+      <img
+        src="../../../../assets/imagens/icone-favorito-{{
+          pensamento.favorito ? 'ativo' : 'inativo'
+        }}.png"
+        alt="icone de favorito {{ pensamento.favorito ? 'ativo' : 'inativo' }}"
+      />
+    </button>
+    <button
       class="botao-editar"
       routerLink="/pensamentos/editarPensamento/{{ pensamento.id }}"
     >
