@@ -11,7 +11,8 @@
       "id": 2,
       "conteudo": "Why do they always send the poor?",
       "autoria": "System Of a Down",
-      "modelo": "modelo2"
+      "modelo": "modelo2",
+      "favorito": true
     },
     {
       "id": 3,
@@ -30,7 +31,8 @@
       "conteudo": "May the force be with you",
       "autoria": "Luke Skywalker",
       "modelo": "modelo1",
-      "id": 5
+      "id": 5,
+      "favorito": true
     },
     {
       "id": 7,
